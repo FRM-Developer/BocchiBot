@@ -1465,12 +1465,13 @@ module.exports = msgHandler = async (bocchi = new Client(), message) => {
                     })
             break
             case 'playv': // Alvio Adji Januar 
+            case 'playvideo': // Alvio Adji Januar 
                 if (!isRegistered) return await bocchi.reply(from, ind.notRegistered(), id)
                 if (!q) return await bocchi.reply(from, ind.wrongFormat(), id)
                 if (limit.isLimit(sender.id, _limit, limitCount, isPremium, isOwner)) return await bocchi.reply(from, ind.limit(), id)
                 limit.addLimit(sender.id, _limit, isPremium, isOwner)
                 await bocchi.reply(from, ind.wait() ,id)
-                const getvid = await axios.get(`https://api.zeks.xyz/api/ytplaymp4/2?apikey=apivinz&q=${q}`)
+                const getvid = await axios.get(`https://api.zeks.xyz/api/ytplaymp4/2?apikey=benbenz&q=${q}`)
                 if (getvid.data.status === false) {
                     await bocchi.reply(from, getvid.data.message, id)
                 } else if (Number(getvid.data.result.size.split('MB')[0]) >= 10.00) {
